@@ -1,0 +1,67 @@
+---
+title: 介绍
+---
+
+# 介绍
+
+{/* - [前端项目](https://github.com/confkeeper/confkeeper-web) */}
+
+{/* - [后端端项目](https://github.com/confkeeper/confkeeper) */}
+
+## 背景介绍
+
+这个项目成立之初的是因为作者公司用的[nacos](https://github.com/alibaba/nacos)作为配置文件中心，该方案有一些痛点:
+
+- 太重，我们只需要用到配置文件的功能，加上jvm占用，直接奔2G去了
+
+- 使用上有些不舒服的地方，又有bug
+
+- docker的mysql镜像使用自定义化构建的，不能很好的备份
+
+~~- 作者自己想学习`golang`尝试~~
+
+...
+
+## 项目介绍
+
+本项目使用`golang`+`react`编写，支持`mysql`、`postgres`、`sqlite`数据库
+
+:::warning
+目前只有完整测试`postgres`，尽量使用`postgres`
+:::
+
+可以在各种环境直接启动，不需要任何依赖，启动迅速
+
+兼容`nacos`的三个主要接口
+
+## 其他说明
+
+:::tip
+作者代码能力低下，所以只会开放issus，如果符合作者想法就会增加
+:::
+
+### 技术栈
+
+感谢开源社区的贡献，让作者可以进行快速的写代码
+
+#### 前端
+
+- [React](https://react.dev/)
+
+- [TypeScript](https://www.typescriptlang.org/)
+
+- [Semi-ui](https://semi.design/zh-CN/)
+
+- [Tailwindcss](https://tailwindcss.com/)
+
+- [Zustand](https://zustand-demo.pmnd.rs/)
+
+- [Alova](https://alova.js.org/zh-CN/)
+
+#### 后端
+
+- [Go](https://golang.org/)
+
+- [Hertz](https://github.com/cloudwego/hertz)
+
+- [Gorm](https://github.com/go-gorm/gorm)

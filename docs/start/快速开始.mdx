@@ -1,0 +1,83 @@
+---
+title: 快速开始
+---
+
+import { Tab, Tabs } from '@rspress/core/theme';
+
+# 快速开始
+
+:::warning
+当前项目未处于开源状态，镜像名称和正式(buyfakett/confkeeper)不一样
+:::
+
+## 启动命令
+
+<Tabs>
+    <Tab label="docker">
+```bash
+#!/bin/bash
+
+docker rm -f confkeeper
+
+docker run -id \
+--name=confkeeper \
+--restart=always \
+--network=host \
+-v /etc/localtime:/etc/localtime:ro \
+-v /etc/timezone:/etc/timezone:ro \
+-v $(pwd)/config/config.yaml:/app/config/config.yaml:ro \
+buyfakett/confkeeper_dev \
+--server.port=8888 \
+--config=/app/config/config.yaml
+```
+    </Tab>
+    <Tab label="docker-compose">
+```yaml
+services:
+    confkeeper:
+        stdin_open: true
+        container_name: confkeeper
+        network_mode: host
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /etc/timezone:/etc/timezone:ro
+            - $(pwd)/config/config.yaml:/app/config/config.yaml:ro
+        image: buyfakett/confkeeper_dev
+        command: --server.port=8888 --config=/app/config/config.yaml
+```
+    </Tab>
+</Tabs>
+
+## 配置
+
+以下是默认配置，可以进行修改
+
+```yaml
+server:
+  port: 8888               # 监听端口
+  log_level: info          # 日志登记
+  swagger: true            # 是否开启swagger
+admin:
+  username: admin          # 默认管理员账号
+  password: admin123456    # 默认管理员密码
+jwt:
+  secret: 123qazwsxedc456  # 需要修改成随机数
+  expire_time: 168
+db:
+  type: sqlite3
+  database: confkeeper
+```
+
+:::tip
+数据库配置可以配置多种类型
+:::
+
+```yaml
+db:
+  type: postgres           # 如果要用mysql，改成mysql
+  host: xxx
+  port: 5432
+  user: postgres
+  password: xxx
+  database: test
+```

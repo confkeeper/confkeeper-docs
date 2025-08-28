@@ -1,0 +1,43 @@
+---
+title: 迁移指南
+---
+
+# 迁移指南
+
+从`nacos`的配置文件迁移到`confkeeper`
+
+主要迁移的是配置文件表和命名空间表
+
+先使用`confkeeper`启动一次，建完所有表
+
+然后运行迁移工具，并加上配置文件`./confkeeper-migrate --config=config.yaml`
+
+配置文件示例
+
+```yaml
+# 数据库配置
+source:
+  type: "mysql"
+  mysql:
+    host: "localhost"
+    port: 3306
+    username: "nacos"
+    password: "xxx"
+    database: "nacos_devtest"
+    charset: "utf8mb4"
+
+target:
+  type: "postgresql"
+  postgresql:
+    host: "localhost"
+    port: 5432
+    username: "postgres"
+    password: "xxx"
+    database: "confkeeper"
+    sslmode: "disable"
+
+# 迁移配置
+migration:
+  batch_size: 1000
+  timeout_seconds: 300
+```
