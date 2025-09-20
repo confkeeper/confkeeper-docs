@@ -8,11 +8,10 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@rspress/plugin-llms": "2.0.0-beta.32",
-    "@shikijs/transformers": "^3.6.0",
-    "@rspress/core": "^v2.0.0-beta.32"
+    "@rspress/plugin-llms": "2.0.0-beta.33",
+    "@rspress/core": "^v2.0.0-beta.33"
   },
   "devDependencies": {
-    "@types/node": "^18.11.17"
+    "@types/node": "^22"
   }
 }
