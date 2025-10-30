@@ -1,0 +1,29 @@
+import {
+  Banner,
+  HomeLayout as BasicHomeLayout,
+  Layout as BasicLayout,
+  getCustomMDXComponent as basicGetCustomMDXComponent,
+} from '@rspress/core/theme';
+import { NavIcon } from '@rstack-dev/doc-ui/nav-icon';
+
+import { useLang } from '@rspress/core/runtime';
+
+const Layout = () => {
+  const lang = useLang();
+  return (
+    <BasicLayout
+      beforeNavTitle={<NavIcon />}
+      beforeNav={
+        <Banner
+          href="/"
+          message={
+              '🚧 confkeeper 正在公司内部测试中 请勿在生产环境使用'
+          }
+        />
+      }
+    />
+  );
+};
+
+export { Layout };
+export * from '@rspress/core/theme';

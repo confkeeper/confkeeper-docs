@@ -3,7 +3,7 @@ pageType: home
 
 hero:
   name: confkeeper文档
-  tagline: 您的配置文件中心
+  text: 您的配置文件中心
   image:
     src: /confkeeper.png
     alt: confkeeper Logo
