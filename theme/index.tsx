@@ -4,6 +4,11 @@ import {
   Layout as BasicLayout,
   getCustomMDXComponent as basicGetCustomMDXComponent,
 } from '@rspress/core/theme';
+import {
+    LlmsContainer,
+    LlmsCopyButton,
+    LlmsViewOptions,
+} from '@rspress/plugin-llms/runtime';
 import { NavIcon } from '@rstack-dev/doc-ui/nav-icon';
 
 import { useLang } from '@rspress/core/runtime';
@@ -24,6 +29,25 @@ const Layout = () => {
     />
   );
 };
+function getCustomMDXComponent() {
+    const { h1: H1, ...components } = basicGetCustomMDXComponent();
 
-export { Layout };
+    const MyH1 = ({ ...props }) => {
+        return (
+            <>
+                <H1 {...props} />
+                <LlmsContainer>
+                    <LlmsCopyButton />
+                    <LlmsViewOptions />
+                </LlmsContainer>
+            </>
+        );
+    };
+    return {
+        ...components,
+        h1: MyH1,
+    };
+}
+
+export { Layout, getCustomMDXComponent };
 export * from '@rspress/core/theme';

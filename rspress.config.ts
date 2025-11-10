@@ -3,6 +3,7 @@ import { pluginLlms } from '@rspress/plugin-llms';
 
 export default defineConfig({
   plugins: [pluginLlms()],
+  lang: 'zh',
   root: 'docs',
   title: 'confkeeper文档',
   icon: '/confkeeper.png',
