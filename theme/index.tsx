@@ -9,7 +9,6 @@ import {
     LlmsCopyButton,
     LlmsViewOptions,
 } from '@rspress/plugin-llms/runtime';
-import { NavIcon } from '@rstack-dev/doc-ui/nav-icon';
 
 import { useLang } from '@rspress/core/runtime';
 
@@ -17,7 +16,6 @@ const Layout = () => {
   const lang = useLang();
   return (
     <BasicLayout
-      beforeNavTitle={<NavIcon />}
       beforeNav={
         <Banner
           href="/"
