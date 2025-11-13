@@ -8,8 +8,8 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@rspress/core": "https://pkg.pr.new/@rspress/core@d58ada3",
-    "@rspress/plugin-llms": "https://pkg.pr.new/@rspress/plugin-llms@d58ada3",
+    "@rspress/core": "https://pkg.pr.new/@rspress/core@027ba46",
+    "@rspress/plugin-llms": "https://pkg.pr.new/@rspress/plugin-llms@027ba46",
     "@rstack-dev/doc-ui": "^1.11.0"
   },
   "devDependencies": {

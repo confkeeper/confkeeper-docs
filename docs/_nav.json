@@ -8,6 +8,10 @@
     "link": "/start/快速开始"
   },
   {
+    "text": "从nacos迁移",
+    "link": "/start/迁移"
+  },
+  {
     "text": "demo",
     "link": "https://confkeeper-demo.tteam.icu"
   }
