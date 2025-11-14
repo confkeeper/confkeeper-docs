@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@rspress/core':
-        specifier: https://pkg.pr.new/@rspress/core@027ba46
-        version: https://pkg.pr.new/@rspress/core@027ba46(@types/react@19.1.2)
+        specifier: https://pkg.pr.new/@rspress/core@29aff85
+        version: https://pkg.pr.new/@rspress/core@29aff85(@types/react@19.1.2)
       '@rspress/plugin-llms':
-        specifier: https://pkg.pr.new/@rspress/plugin-llms@027ba46
-        version: https://pkg.pr.new/@rspress/plugin-llms@027ba46(@rspress/core@https://pkg.pr.new/@rspress/core@027ba46(@types/react@19.1.2))
+        specifier: https://pkg.pr.new/@rspress/plugin-llms@29aff85
+        version: https://pkg.pr.new/@rspress/plugin-llms@29aff85(@rspress/core@https://pkg.pr.new/@rspress/core@29aff85(@types/react@19.1.2))
       '@rstack-dev/doc-ui':
         specifier: ^1.11.0
         version: 1.11.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -151,8 +151,8 @@ packages:
       webpack-hot-middleware:
         optional: true
 
-  '@rspress/core@https://pkg.pr.new/@rspress/core@027ba46':
-    resolution: {tarball: https://pkg.pr.new/@rspress/core@027ba46}
+  '@rspress/core@https://pkg.pr.new/@rspress/core@29aff85':
+    resolution: {tarball: https://pkg.pr.new/@rspress/core@29aff85}
     version: 2.0.0-beta.34
     engines: {node: '>=18.0.0'}
     hasBin: true
@@ -209,20 +209,20 @@ packages:
     resolution: {integrity: sha512-NpNhTKBIlV3O6ADhoZkgHvBFvXMW2TYlIWmIT1ysJESUBqDpaN9H3Teve5fugjU2pQ2ORBZO6SQGKliMw/8m/Q==}
     engines: {node: '>= 10'}
 
-  '@rspress/plugin-llms@https://pkg.pr.new/@rspress/plugin-llms@027ba46':
-    resolution: {tarball: https://pkg.pr.new/@rspress/plugin-llms@027ba46}
+  '@rspress/plugin-llms@https://pkg.pr.new/@rspress/plugin-llms@29aff85':
+    resolution: {tarball: https://pkg.pr.new/@rspress/plugin-llms@29aff85}
     version: 2.0.0-beta.34
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@rspress/core': ^2.0.0-beta.34
 
-  '@rspress/runtime@https://pkg.pr.new/web-infra-dev/rspress/@rspress/runtime@027ba46':
-    resolution: {tarball: https://pkg.pr.new/web-infra-dev/rspress/@rspress/runtime@027ba46}
+  '@rspress/runtime@https://pkg.pr.new/web-infra-dev/rspress/@rspress/runtime@29aff85':
+    resolution: {tarball: https://pkg.pr.new/web-infra-dev/rspress/@rspress/runtime@29aff85}
     version: 2.0.0-beta.34
     engines: {node: '>=18.0.0'}
 
-  '@rspress/shared@https://pkg.pr.new/web-infra-dev/rspress/@rspress/shared@027ba46':
-    resolution: {tarball: https://pkg.pr.new/web-infra-dev/rspress/@rspress/shared@027ba46}
+  '@rspress/shared@https://pkg.pr.new/web-infra-dev/rspress/@rspress/shared@29aff85':
+    resolution: {tarball: https://pkg.pr.new/web-infra-dev/rspress/@rspress/shared@29aff85}
     version: 2.0.0-beta.34
 
   '@rstack-dev/doc-ui@1.11.0':
@@ -1204,15 +1204,15 @@ snapshots:
       html-entities: 2.6.0
       react-refresh: 0.18.0
 
-  '@rspress/core@https://pkg.pr.new/@rspress/core@027ba46(@types/react@19.1.2)':
+  '@rspress/core@https://pkg.pr.new/@rspress/core@29aff85(@types/react@19.1.2)':
     dependencies:
       '@mdx-js/mdx': 3.1.1
       '@mdx-js/react': 3.1.1(@types/react@19.1.2)(react@19.2.0)
       '@rsbuild/core': 1.6.3
       '@rsbuild/plugin-react': 1.4.2(@rsbuild/core@1.6.3)
       '@rspress/mdx-rs': 0.6.6
-      '@rspress/runtime': https://pkg.pr.new/web-infra-dev/rspress/@rspress/runtime@027ba46
-      '@rspress/shared': https://pkg.pr.new/web-infra-dev/rspress/@rspress/shared@027ba46
+      '@rspress/runtime': https://pkg.pr.new/web-infra-dev/rspress/@rspress/runtime@29aff85
+      '@rspress/shared': https://pkg.pr.new/web-infra-dev/rspress/@rspress/shared@29aff85
       '@shikijs/rehype': 3.12.2
       '@types/unist': 3.0.3
       '@unhead/react': 2.0.19(react@19.2.0)
@@ -1288,9 +1288,9 @@ snapshots:
       '@rspress/mdx-rs-win32-arm64-msvc': 0.6.6
       '@rspress/mdx-rs-win32-x64-msvc': 0.6.6
 
-  '@rspress/plugin-llms@https://pkg.pr.new/@rspress/plugin-llms@027ba46(@rspress/core@https://pkg.pr.new/@rspress/core@027ba46(@types/react@19.1.2))':
+  '@rspress/plugin-llms@https://pkg.pr.new/@rspress/plugin-llms@29aff85(@rspress/core@https://pkg.pr.new/@rspress/core@29aff85(@types/react@19.1.2))':
     dependencies:
-      '@rspress/core': https://pkg.pr.new/@rspress/core@027ba46(@types/react@19.1.2)
+      '@rspress/core': https://pkg.pr.new/@rspress/core@29aff85(@types/react@19.1.2)
       remark-mdx: 3.1.1
       remark-parse: 11.0.0
       remark-stringify: 11.0.0
@@ -1299,15 +1299,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@rspress/runtime@https://pkg.pr.new/web-infra-dev/rspress/@rspress/runtime@027ba46':
+  '@rspress/runtime@https://pkg.pr.new/web-infra-dev/rspress/@rspress/runtime@29aff85':
     dependencies:
-      '@rspress/shared': https://pkg.pr.new/web-infra-dev/rspress/@rspress/shared@027ba46
+      '@rspress/shared': https://pkg.pr.new/web-infra-dev/rspress/@rspress/shared@29aff85
       '@unhead/react': 2.0.19(react@19.2.0)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
       react-router-dom: 6.30.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
 
-  '@rspress/shared@https://pkg.pr.new/web-infra-dev/rspress/@rspress/shared@027ba46':
+  '@rspress/shared@https://pkg.pr.new/web-infra-dev/rspress/@rspress/shared@29aff85':
     dependencies:
       '@rsbuild/core': 1.6.3
       '@shikijs/rehype': 3.12.2
