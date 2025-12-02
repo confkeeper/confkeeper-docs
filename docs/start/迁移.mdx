@@ -18,6 +18,10 @@ pageType: 'doc-wide'
 
 配置文件示例
 
+:::tip
+其中`tenant_names`配置是指定需要迁移的命名空间，如果不加这个配置的话就是迁移所有命名空间
+:::
+
 ```yaml
 # 数据库配置
 source:
@@ -44,4 +48,6 @@ target:
 migration:
   batch_size: 1000
   timeout_seconds: 300
+  tenant_names:
+    - "default"
 ```

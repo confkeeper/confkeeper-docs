@@ -1,0 +1,44 @@
+---
+title: 编辑器支持更多语言
+sidebar: false
+pageType: 'doc-wide'
+---
+
+# 编辑器支持更多语言
+
+此项目前端的编辑器是使用[monaco-editor](https://github.com/microsoft/monaco-editor)的，也就是`vscode`使用的编辑器
+
+目前为了打包体积，我默认支持了这些语言`['json', 'html', 'xml', 'yaml', 'html', 'ini']`
+
+如果需要增加更多语言需要修改前后端配置
+
+:::tip
+以下是支持的语言
+
+'abap' | 'apex' | 'azcli' | 'bat' | 'bicep' | 'cameligo' | 'clojure' | 'coffee' | 'cpp' | 'csharp' | 'csp' | 'css' | 'cypher' | 'dart' | 'dockerfile' | 'ecl' | 'elixir' | 'flow9' | 'freemarker2' | 'fsharp' | 'go' | 'graphql' | 'handlebars' | 'hcl' | 'html' | 'ini' | 'java' | 'javascript' | 'json' | 'julia' | 'kotlin' | 'less' | 'lexon' | 'liquid' | 'lua' | 'm3' | 'markdown' | 'mdx' | 'mips' | 'msdax' | 'mysql' | 'objective-c' | 'pascal' | 'pascaligo' | 'perl' | 'pgsql' | 'php' | 'pla' | 'postiats' | 'powerquery' | 'powershell' | 'protobuf' | 'pug' | 'python' | 'qsharp' | 'r' | 'razor' | 'redis' | 'redshift' | 'restructuredtext' | 'ruby' | 'rust' | 'sb' | 'scala' | 'scheme' | 'scss' | 'shell' | 'solidity' | 'sophia' | 'sparql' | 'sql' | 'st' | 'swift' | 'systemverilog' | 'tcl' | 'twig' | 'typescript' | 'typespec' | 'vb' | 'wgsl' | 'xml' | 'yaml'
+:::
+
+## 后端
+
+```yaml
+confkeeper:
+  config_type:
+    - "xxx"
+```
+
+## 前端
+
+:::tip
+第一个文件是必须改，第二个文件为默认值，也是最好改
+:::
+
+```ts title="rsbuild.config.ts"
+plugins: [new MonacoEditorWebpackPlugin({
+    languages: ['json', 'html', 'xml', 'yaml', 'html', 'ini'],
+    globalAPI: true,
+})],
+```
+
+```tsx title="src/config/index.tsx"
+export const CONFIG_TYPE_LIST: string[] = ['text', 'json', 'xml', 'yaml', 'html', 'properties', 'toml', 'ini'];
+```
