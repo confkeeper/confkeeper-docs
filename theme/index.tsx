@@ -3,7 +3,7 @@ import {
   HomeLayout as BasicHomeLayout,
   Layout as BasicLayout,
   getCustomMDXComponent as basicGetCustomMDXComponent,
-} from '@rspress/core/theme';
+} from '@rspress/core/theme-original';
 import {
     LlmsContainer,
     LlmsCopyButton,
@@ -48,4 +48,4 @@ function getCustomMDXComponent() {
 }
 
 export { Layout, getCustomMDXComponent };
-export * from '@rspress/core/theme';
+export * from '@rspress/core/theme-original';
