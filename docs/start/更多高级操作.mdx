@@ -9,23 +9,35 @@ pageType: 'doc-wide'
 ## 各种api样式使用shell操作配置
 
 ### nacos兼容接口
+
 ```bash
 # 登陆获取token
-nacos_accessToken=$(${curl_cmd} -X POST -s "${NACOS_URL}/nacos/v1/auth/login" -d "username=admin&password=admin123456" | awk -F '"' '{print $4}')
+nacos_accessToken=$(curl -X POST -s "http://localhost:8888/nacos/v1/auth/login" -d "username=admin&password=admin123456" | awk -F '"' '{print $4}')
 # 获取配置
-curl http://localhost:8888/nacos/v1/cs/configs?accessToken=${nacos_accessToken}&tenant=test&dataId=test&group=test
+curl "http://localhost:8888/nacos/v1/cs/configs?accessToken=${nacos_accessToken}&tenant=test&dataId=test&group=test"
 # 更新或新建配置
 curl -X POST "http://localhost:8888/nacos/v1/cs/configs?accessToken=${nacos_accessToken}" -d "type=properties&tenant=test&dataId=test&group=test" --data-urlencode "content@application-dev.properties"
 ```
 
-### 使用账号
+### `confkeeper`标准接口
+
+```bash
+# 登陆获取token
+nacos_accessToken=$(curl -X POST -s "http://localhost:8888/nacos/v1/auth/login" -d "username=admin&password=admin123456" | awk -F '"' '{print $4}')
+# 获取配置
+curl -H "Authorization: ${nacos_accessToken}" "http://localhost:8888/api/config/get_by_file?tenant=test&dataId=test&group=test"
+# 更新或新建配置
+curl -X POST -H "Authorization: ${nacos_accessToken}" "http://localhost:8888/api/config/update_by_file" -d "type=properties&tenant=test&dataId=test&group=test" --data-urlencode "content@application-dev.properties"
+```
+
+### 使用账号(简化调用)
 
 ```bash
 # 获取配置
-curl -X GET http://localhost:8888/api/config/get_by_user?tenant=test&dataId=test&group=test&username=admin&password=admin123456
+curl -X GET "http://localhost:8888/api/config/get_by_user?tenant=test&dataId=test&group=test&username=admin&password=admin123456"
 
 # 更新或新建配置
-curl -X POST http://localhost:8888/api/config/update_by_user -d 'type=properties&tenant=test&dataId=test&group=test&username=admin&password=admin123456' --data-urlencode content@application-dev.properties
+curl -X POST "http://localhost:8888/api/config/update_by_user" -d 'type=properties&tenant=test&dataId=test&group=test&username=admin&password=admin123456' --data-urlencode content@application-dev.properties
 ```
 
 ## 编辑器支持更多语言
