@@ -10,9 +10,9 @@
   "dependencies": {
     "@rspress/core": "2.0.0-rc.2",
     "@rspress/plugin-llms": "2.0.0-rc.2",
-    "@rstack-dev/doc-ui": "^1.12.0"
+    "@rstack-dev/doc-ui": "^1.12.2"
   },
   "devDependencies": {
-    "@types/node": "^22.19.2"
+    "@types/node": "^22.19.3"
   }
 }
