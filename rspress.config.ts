@@ -1,8 +1,6 @@
 import { defineConfig } from '@rspress/core';
-import { pluginLlms } from '@rspress/plugin-llms';
 
 export default defineConfig({
-  plugins: [pluginLlms()],
   lang: 'zh',
   root: 'docs',
   title: 'confkeeper文档',
@@ -20,6 +18,7 @@ export default defineConfig({
   ssg: {
     experimentalWorker: true,
   },
+  llms: true,
   themeConfig: {
     fallbackHeadingTitle: false,
     prevPageText: '上一页',
