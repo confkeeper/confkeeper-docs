@@ -1,7 +1,4 @@
 import {
-  Banner,
-  HomeLayout as BasicHomeLayout,
-  Layout as BasicLayout,
   getCustomMDXComponent as basicGetCustomMDXComponent,
 } from '@rspress/core/theme-original';
 import {
@@ -10,23 +7,6 @@ import {
     LlmsViewOptions,
 } from '@rspress/plugin-llms/runtime';
 
-import { useLang } from '@rspress/core/runtime';
-
-const Layout = () => {
-  const lang = useLang();
-  return (
-    <BasicLayout
-      beforeNav={
-        <Banner
-          href="/"
-          message={
-              '🚧 confkeeper 正在公司内部测试中 请勿在生产环境使用'
-          }
-        />
-      }
-    />
-  );
-};
 function getCustomMDXComponent() {
     const { h1: H1, ...components } = basicGetCustomMDXComponent();
 
@@ -47,5 +27,5 @@ function getCustomMDXComponent() {
     };
 }
 
-export { Layout, getCustomMDXComponent };
+export { getCustomMDXComponent };
 export * from '@rspress/core/theme-original';

@@ -24,7 +24,7 @@ export default defineConfig({
     prevPageText: '上一页',
     nextPageText: '下一页',
     socialLinks: [
-      { icon: 'github', mode: 'link', content: 'https://github.com/confkeeper/confkeeper-docs' },
+      { icon: 'github', mode: 'link', content: 'https://github.com/confkeeper/confkeeper' },
     ],
     footer: {
       message: 'Apache-2.0 license<br />Copyright © 2025 <a href="https://github.com/buyfakett" target="_blank" style="color: skyblue">buyfakett</a>',
