@@ -1,11 +1,16 @@
 import { defineConfig } from '@rspress/core';
+import { pluginSitemap } from "@rspress/plugin-sitemap";
+
+const domain: string = 'https://confkeeper.tteam.icu';
 
 export default defineConfig({
+  plugins: [pluginSitemap({siteUrl: domain})],
   lang: 'zh',
   root: 'docs',
   title: 'confkeeper文档',
   icon: '/confkeeper.png',
   outDir: 'dist',
+  LlmsUI: true,
   search: {
     codeBlocks: true,
   },
