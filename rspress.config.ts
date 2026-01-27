@@ -1,10 +1,11 @@
 import { defineConfig } from '@rspress/core';
 import { pluginSitemap } from "@rspress/plugin-sitemap";
+import mermaid from 'rspress-plugin-mermaid';
 
 const domain: string = 'https://confkeeper.tteam.icu';
 
 export default defineConfig({
-  plugins: [pluginSitemap({siteUrl: domain})],
+  plugins: [pluginSitemap({siteUrl: domain}), mermaid()],
   lang: 'zh',
   root: 'docs',
   title: 'confkeeper文档',

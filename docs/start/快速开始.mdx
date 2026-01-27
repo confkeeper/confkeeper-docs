@@ -9,9 +9,9 @@ import { Tab, Tabs } from '@rspress/core/theme';
 # 快速开始
 
 :::warning
-`v0.0.x`为内部版本(docker镜像名为`buyfakett/confkeeper_dev`)，`v0.1.x`后为开源版本(docker镜像名为`buyfakett/confkeeper`)
+`dev-0.0.x`为内部版本，`0.1.x`后为开源版本, 开源版本会覆盖`latest`
 
-注意: 从内部版本`v0.0.26`开始,后端框架从[Hertz](https://github.com/cloudwego/hertz)重构为[Gin](https://github.com/gin-gonic/gin)
+注意: 从内部版本`dev-0.0.26`开始,后端框架从[Hertz](https://github.com/cloudwego/hertz)重构为[Gin](https://github.com/gin-gonic/gin)
 :::
 
 ## 启动命令
@@ -73,23 +73,30 @@ services:
 
 ```yaml
 server:
-  port: 8888               # 监听端口
-  log_level: info          # 日志登记
-  swagger: true            # 是否开启swagger
-  zone: Asia/Shanghai      # 时区
-  captcha_expire_time: 5   # 验证码过期时间(分钟)
+  port: 8888                    # 监听端口
+  log_level: info               # 日志登记
+  swagger: true                 # 是否开启swagger
+  zone: Asia/Shanghai           # 时区
+  captcha_expire_time: 5        # 验证码过期时间(分钟)
 admin:
-  username: admin          # 默认管理员账号
-  password: admin123456    # 默认管理员密码
+  username: admin               # 默认管理员账号
+  password: admin123456         # 默认管理员密码
 jwt:
-  secret: 123qazwsxedc456  # 需要修改成随机数
+  secret: 123qazwsxedc456       # 需要修改成随机数
   expire_time: 168
 db:
   type: sqlite3
   database: confkeeper
 captcha:
-  length: 6                # 验证码长度
-  noise_count: 50          # 验证码干扰个数
+  length: 6                     # 验证码长度
+  noise_count: 50               # 验证码干扰个数
+ldap:
+  enabled: false                # 是否启用 LDAP 认证 (true: 开启, false: 关闭)
+  addr: "127.0.0.1:389"         # LDAP 服务器地址与端口 (标准端口 389, LDAPS 端口 636)
+  base_dn: "dc=example,dc=com"  # 基础判别名：搜索用户的起始根节点 (通常是域名拆分)
+  bind_dn: ""                   # 绑定 DN：用于登录 LDAP 进行查询的管理员账号 (如: "cn=admin,dc=example,dc=com")
+  bind_pass: ""                 # 绑定密码：上述管理员账号的密码
+  tls: false                    # 是否启用 TLS 加密传输 (建议在生产环境中开启以防止明文传输)
 ```
 
 :::tip
