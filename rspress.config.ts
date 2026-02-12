@@ -1,11 +1,22 @@
 import { defineConfig } from '@rspress/core';
 import { pluginSitemap } from "@rspress/plugin-sitemap";
 import mermaid from 'rspress-plugin-mermaid';
+import { pluginGiscus } from 'rspress-plugin-giscus';
 
 const domain: string = 'https://confkeeper.tteam.icu';
 
 export default defineConfig({
-  plugins: [pluginSitemap({siteUrl: domain}), mermaid()],
+  plugins: [
+    pluginGiscus({
+            id:"comments",
+            repo:"confkeeper/comments",
+            repoId:"R_kgDOROqXug",
+            category:"Announcements",
+            categoryId:"DIC_kwDOROqXus4C2SVT"
+        }),
+    pluginSitemap({siteUrl: domain}), 
+    mermaid()
+  ],
   lang: 'zh',
   root: 'docs',
   title: 'confkeeper文档',
