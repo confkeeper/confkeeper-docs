@@ -9,13 +9,13 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@rspress/core": "^2.0.5",
-    "@rspress/plugin-llms": "^2.0.5",
-    "@rspress/plugin-sitemap": "^2.0.5",
+    "@rspress/core": "^2.0.9",
+    "@rspress/plugin-llms": "^2.0.9",
+    "@rspress/plugin-sitemap": "^2.0.9",
     "rspress-plugin-giscus": "^1.0.4",
     "rspress-plugin-mermaid": "^1.0.1"
   },
   "devDependencies": {
-    "@types/node": "^24.12.0"
+    "@types/node": "^24.12.2"
   }
 }
