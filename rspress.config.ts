@@ -32,9 +32,6 @@ export default defineConfig({
   route: {
     cleanUrls: true,
   },
-  ssg: {
-    experimentalWorker: true,
-  },
   llms: true,
   themeConfig: {
     fallbackHeadingTitle: false,
