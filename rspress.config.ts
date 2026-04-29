@@ -33,6 +33,7 @@ export default defineConfig({
     cleanUrls: true,
   },
   llms: true,
+  ssg: true,
   themeConfig: {
     fallbackHeadingTitle: false,
     prevPageText: '上一页',
