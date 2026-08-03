@@ -1,0 +1,57 @@
+---
+title: Migration Guide
+sidebar: false
+pageType: 'doc-wide'
+---
+
+# Migration Guide
+
+[Migration tool](https://github.com/confkeeper/confkeeper-migrate)
+
+Migrate configuration files from `nacos` to `confkeeper`.
+
+The migration mainly covers the configuration file table and namespace table.
+
+Start `confkeeper` once first so that all tables are created.
+
+Then run the migration tool with a config file:
+
+```bash
+./confkeeper-migrate --config=config.yaml
+```
+
+Example config:
+
+:::tip
+The `tenant_names` option specifies which namespaces to migrate. If this option is omitted, all namespaces will be migrated.
+:::
+
+```yaml
+# Database configuration
+source:
+  type: "mysql"
+  mysql:
+    host: "localhost"
+    port: 3306
+    username: "nacos"
+    password: "xxx"
+    database: "nacos_devtest"
+    charset: "utf8mb4"
+
+target:
+  type: "postgresql"
+  postgresql:
+    host: "localhost"
+    port: 5432
+    username: "postgres"
+    password: "xxx"
+    database: "confkeeper"
+    sslmode: "disable"
+
+# Migration configuration
+migration:
+  batch_size: 1000
+  timeout_seconds: 300
+  tenant_names:
+    - "default"
+```

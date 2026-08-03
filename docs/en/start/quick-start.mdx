@@ -1,0 +1,114 @@
+---
+title: Quick Start
+sidebar: false
+pageType: 'doc-wide'
+---
+
+import { Tab, Tabs } from '@rspress/core/theme';
+
+# Quick Start
+
+:::warning
+`dev-0.0.x` versions are internal versions. Versions after `0.1.x` are open-source versions, and open-source releases will overwrite `latest`.
+
+Note: Starting from internal version `dev-0.0.26`, the backend framework was refactored from [Hertz](https://github.com/cloudwego/hertz) to [Gin](https://github.com/gin-gonic/gin).
+:::
+
+## Start Command
+
+<Tabs>
+    <Tab label="docker">
+```bash
+#!/bin/bash
+
+docker rm -f confkeeper
+
+docker run -id \
+--name=confkeeper \
+--restart=always \
+--network=host \
+--health-cmd="wget --no-verbose --tries=1 --spider http://localhost:8888/api/ping || exit 1" \
+--health-interval=30s \
+--health-timeout=10s \
+--health-retries=3 \
+-v /etc/localtime:/etc/localtime:ro \
+-v /etc/timezone:/etc/timezone:ro \
+-v $(pwd)/config/config.yaml:/app/config/config.yaml:ro \
+buyfakett/confkeeper \
+-p=8888 \
+-c=/app/config/config.yaml
+```
+    </Tab>
+    <Tab label="docker-compose">
+```yaml
+services:
+    confkeeper:
+        stdin_open: true
+        container_name: confkeeper
+        network_mode: host
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /etc/timezone:/etc/timezone:ro
+            - $(pwd)/config/config.yaml:/app/config/config.yaml:ro
+        image: buyfakett/confkeeper
+        command: -p=8888 -c=/app/config/config.yaml
+        healthcheck:
+            test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8888/api/ping || exit 1"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+```
+    </Tab>
+</Tabs>
+
+## Configuration
+
+:::tip
+Configuration priority is `command line` > `environment variables` > `specified config file` > `default config file`.
+
+Environment variables need the `CONFKEEPER_GO` prefix. For example, the server port is `CONFKEEPER_GO_SERVER_PORT`.
+:::
+
+The following is the default configuration. You can change it as needed.
+
+```yaml
+server:
+  port: 8888                    # Listening port
+  log_level: info               # Log level
+  swagger: true                 # Whether to enable Swagger
+  zone: Asia/Shanghai           # Time zone
+  captcha_expire_time: 5        # Captcha expiration time in minutes
+admin:
+  username: admin               # Default admin username
+  password: admin123456         # Default admin password
+jwt:
+  secret: 123qazwsxedc456       # Change this to a random value
+  expire_time: 168
+db:
+  type: sqlite3
+  database: confkeeper
+captcha:
+  length: 6                     # Captcha length
+  noise_count: 50               # Captcha noise count
+ldap:
+  enabled: false                # Whether to enable LDAP auth (true: enabled, false: disabled)
+  addr: "127.0.0.1:389"         # LDAP server address and port (standard port 389, LDAPS port 636)
+  base_dn: "dc=example,dc=com"  # Base distinguished name: root node for user search, usually split from the domain name
+  bind_dn: ""                   # Bind DN: admin account used to log in to LDAP for queries, such as "cn=admin,dc=example,dc=com"
+  bind_pass: ""                 # Bind password for the admin account above
+  tls: false                    # Whether to enable TLS encryption. Recommended in production to avoid plaintext transmission
+```
+
+:::tip
+The database configuration supports multiple database types.
+:::
+
+```yaml
+db:
+  type: postgres           # Change to mysql if you want to use MySQL
+  host: xxx
+  port: 5432
+  user: postgres
+  password: xxx
+  database: test
+```

@@ -1,0 +1,22 @@
+[
+  {
+    "text": "Introduction",
+    "link": "/introduction"
+  },
+  {
+    "text": "Quick Start",
+    "link": "/start/quick-start"
+  },
+  {
+    "text": "Advanced Operations",
+    "link": "/start/advanced-operations"
+  },
+  {
+    "text": "Migrate from Nacos",
+    "link": "/start/migration"
+  },
+  {
+    "text": "Demo",
+    "link": "https://confkeeper-demo.tteam.icu"
+  }
+]

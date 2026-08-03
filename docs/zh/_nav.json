@@ -1,19 +1,19 @@
 [
   {
     "text": "介绍",
-    "link": "/介绍"
+    "link": "/introduction"
   },
   {
     "text": "快速开始",
-    "link": "/start/快速开始"
+    "link": "/start/quick-start"
   },
   {
     "text": "更多高级操作",
-    "link": "/start/更多高级操作"
+    "link": "/start/advanced-operations"
   },
   {
     "text": "从nacos迁移",
-    "link": "/start/迁移"
+    "link": "/start/migration"
   },
   {
     "text": "demo",

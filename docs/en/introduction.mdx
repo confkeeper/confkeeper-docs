@@ -1,0 +1,69 @@
+---
+title: Introduction
+sidebar: false
+pageType: 'doc-wide'
+---
+
+# Introduction
+
+{/* - [Frontend project](https://github.com/confkeeper/confkeeper-web) */}
+
+{/* - [Backend project](https://github.com/confkeeper/confkeeper) */}
+
+:::tip
+This project has a [demo](https://confkeeper-demo.tteam.icu/). Feel free to try it.
+
+The demo runs an internal version, which may differ slightly from the official release. These features may be added to a future release.
+:::
+
+## Background
+
+This project was started because the author's company used [Nacos](https://github.com/alibaba/nacos) as its configuration center, and that setup had a few pain points:
+
+- It was too heavy. We only needed configuration management, but with the JVM footprint it quickly approached 2 GB of resource usage.
+
+- Some parts of the user experience were uncomfortable, and there were bugs.
+
+- The Docker MySQL image was built with heavy customization, which made backups difficult.
+
+~~- The author wanted to learn `golang` by building something practical.~~
+
+...
+
+## Project Overview
+
+This project is written with `golang` and `react`, and supports `mysql`, `postgres`, and `sqlite` databases.
+
+:::warning
+Only `postgres` has been fully tested so far. Prefer `postgres` when possible.
+:::
+
+It can start directly in different environments without additional dependencies, and it starts quickly.
+
+It is compatible with the three main `nacos` APIs.
+
+### Tech Stack
+
+Thanks to the open-source community, the author can build quickly on top of excellent projects.
+
+#### Frontend
+
+- [React](https://react.dev/)
+
+- [TypeScript](https://www.typescriptlang.org/)
+
+- [Semi-ui](https://semi.design/zh-CN/)
+
+- [Tailwindcss](https://tailwindcss.com/)
+
+- [Zustand](https://zustand-demo.pmnd.rs/)
+
+- [Alova](https://alova.js.org/zh-CN/)
+
+#### Backend
+
+- [Go](https://golang.org/)
+
+- [Gin](https://github.com/gin-gonic/gin)
+
+- [Gorm](https://github.com/go-gorm/gorm)

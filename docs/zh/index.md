@@ -10,10 +10,10 @@ hero:
   actions:
     - theme: brand
       text: 介绍
-      link: /介绍
+      link: /introduction
     - theme: alt
       text: 快速开始
-      link: /start/快速开始
+      link: /start/quick-start
 
 features:
   - title: 极速启动

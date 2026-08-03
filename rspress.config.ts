@@ -17,9 +17,24 @@ export default defineConfig({
     pluginSitemap({siteUrl: domain}), 
     mermaid()
   ],
-  lang: 'zh',
+  lang: 'en',
+  locales: [
+    {
+      lang: 'en',
+      label: 'English',
+      title: 'confkeeper Docs',
+      description: 'Your configuration center',
+    },
+    {
+      lang: 'zh',
+      label: '简体中文',
+      title: 'confkeeper文档',
+      description: '您的配置文件中心',
+    },
+  ],
   root: 'docs',
-  title: 'confkeeper文档',
+  title: 'confkeeper Docs',
+  description: 'Your configuration center',
   icon: '/confkeeper.png',
   outDir: 'dist',
   LlmsUI: true,
@@ -31,15 +46,14 @@ export default defineConfig({
   },
   route: {
     cleanUrls: true,
+    localeRedirect: 'never',
   },
   llms: true,
   ssg: true,
   themeConfig: {
     fallbackHeadingTitle: false,
-    prevPageText: '上一页',
-    nextPageText: '下一页',
     socialLinks: [
-      { icon: 'github', mode: 'link', content: 'https://github.com/confkeeper/confkeeper' },
+      { icon: 'github', mode: 'github-stars', content: 'https://github.com/confkeeper/confkeeper' },
     ],
     footer: {
       message: 'Apache-2.0 license<br />Copyright © 2025 <a href="https://github.com/buyfakett" target="_blank" style="color: skyblue">buyfakett</a>',

@@ -1,93 +1,93 @@
 ---
-title: 更多高级操作
+title: Advanced Operations
 sidebar: false
 pageType: 'doc-wide'
 ---
 
-# 更多高级操作
+# Advanced Operations
 
-## 接入LDAP
+## LDAP Integration
 
-[配置](./快速开始.mdx#配置)
+[Configuration](./quick-start.mdx#configuration)
 
-LDAP流程:
+LDAP flow:
 
 ```mermaid
 flowchart TD
-    A[用户登录请求<br>输入用户名、密码] --> B{是否启用 LDAP？<br>（检查配置项）}
-    B -- 否 --> C[直接本地数据库认证]
-    B -- 是 --> D[查询本地数据库用户]
-    D --> E{本地用户是否存在？}
-    E -- 是 --> F[用本地密码验证登录]
-    E -- 否 --> G[连接 LDAP 服务器]
-    G --> H[在 LDAP 中搜索用户]
-    H --> I{LDAP 用户是否存在？}
-    I -- 否 --> J[返回“用户不存在”]
-    I -- 是 --> K[验证 LDAP 密码]
-    K --> L{密码正确？}
-    L -- 否 --> M[返回“密码错误”]
-    L -- 是 --> N[从 LDAP 读取用户信息<br>（用户名、邮箱等）]
-    N --> O[将用户信息及密码<br>保存到本地数据库]
-    O --> P[登录成功]
+    A["Login request<br>User enters username and password"] --> B{"Is LDAP enabled?<br>Check configuration"}
+    B -- "No" --> C["Authenticate against the local database"]
+    B -- "Yes" --> D["Query the local database user"]
+    D --> E{"Does the local user exist?"}
+    E -- "Yes" --> F["Verify login with the local password"]
+    E -- "No" --> G["Connect to the LDAP server"]
+    G --> H["Search for the user in LDAP"]
+    H --> I{"Does the LDAP user exist?"}
+    I -- "No" --> J["Return user not found"]
+    I -- "Yes" --> K["Verify the LDAP password"]
+    K --> L{"Is the password correct?"}
+    L -- "No" --> M["Return password error"]
+    L -- "Yes" --> N["Read user info from LDAP<br>username, email, and more"]
+    N --> O["Save user info and password<br>to the local database"]
+    O --> P["Login successful"]
     F --> P
-    C --> Q{认证成功？}
-    Q -- 是 --> P
-    Q -- 否 --> R[返回登录失败]
+    C --> Q{"Authentication successful?"}
+    Q -- "Yes" --> P
+    Q -- "No" --> R["Return login failed"]
 ```
 
-## 各种api样式使用shell操作配置
+## Manage Configurations with Shell Commands
 
 :::warning
-这里使用的token和网页使用的不一样，并且失效很短
+The token used here is different from the token used by the web UI, and it expires quickly.
 :::
 
-### nacos兼容接口
+### Nacos-Compatible API
 
 ```bash
-# 登陆获取token
+# Log in and get a token
 nacos_accessToken=$(curl -X POST -s "http://localhost:8888/nacos/v1/auth/login" -d "username=admin&password=admin123456" | awk -F '"' '{print $4}')
-# 获取配置
+# Get configuration
 curl "http://localhost:8888/nacos/v1/cs/configs?accessToken=${nacos_accessToken}&tenant=test&dataId=test&group=test"
-# 更新或新建配置
+# Update or create configuration
 curl -X POST "http://localhost:8888/nacos/v1/cs/configs?accessToken=${nacos_accessToken}" -d "type=properties&tenant=test&dataId=test&group=test" --data-urlencode "content@application-dev.properties"
 ```
 
-### `confkeeper`标准接口
+### Standard `confkeeper` API
 
 ```bash
-# 登陆获取token
+# Log in and get a token
 nacos_accessToken=$(curl -X POST -s "http://localhost:8888/nacos/v1/auth/login" -d "username=admin&password=admin123456" | awk -F '"' '{print $4}')
-# 获取配置
+# Get configuration
 curl -H "Authorization: ${nacos_accessToken}" "http://localhost:8888/api/config/get_by_file?tenant=test&dataId=test&group=test"
-# 更新或新建配置
+# Update or create configuration
 curl -X POST -H "Authorization: ${nacos_accessToken}" "http://localhost:8888/api/config/update_by_file" -d "type=properties&tenant=test&dataId=test&group=test" --data-urlencode "content@application-dev.properties"
 ```
 
-### 使用账号(简化调用)
+### Use Account Credentials for Simpler Calls
 
 ```bash
-# 获取配置
+# Get configuration
 curl -X GET "http://localhost:8888/api/config/get_by_user?tenant=test&dataId=test&group=test&username=admin&password=admin123456"
 
-# 更新或新建配置
+# Update or create configuration
 curl -X POST "http://localhost:8888/api/config/update_by_user" -d 'type=properties&tenant=test&dataId=test&group=test&username=admin&password=admin123456' --data-urlencode content@application-dev.properties
 ```
 
-## 编辑器支持更多语言
+## Add More Editor Languages
 
-此项目前端的编辑器是使用[monaco-editor](https://github.com/microsoft/monaco-editor)的，也就是`vscode`使用的编辑器
+The frontend editor in this project uses [monaco-editor](https://github.com/microsoft/monaco-editor), which is also the editor used by `vscode`.
 
-目前为了打包体积，我默认支持了这些语言`['json', 'html', 'xml', 'yaml', 'html', 'ini']`
+To keep the bundle size small, these languages are enabled by default: `['json', 'html', 'xml', 'yaml', 'html', 'ini']`.
 
-如果需要增加更多语言需要修改前后端配置
+To add more languages, update both the frontend and backend configurations.
 
 :::tip
-以下是支持的语言
+Supported languages:
 
 'abap' | 'apex' | 'azcli' | 'bat' | 'bicep' | 'cameligo' | 'clojure' | 'coffee' | 'cpp' | 'csharp' | 'csp' | 'css' | 'cypher' | 'dart' | 'dockerfile' | 'ecl' | 'elixir' | 'flow9' | 'freemarker2' | 'fsharp' | 'go' | 'graphql' | 'handlebars' | 'hcl' | 'html' | 'ini' | 'java' | 'javascript' | 'json' | 'julia' | 'kotlin' | 'less' | 'lexon' | 'liquid' | 'lua' | 'm3' | 'markdown' | 'mdx' | 'mips' | 'msdax' | 'mysql' | 'objective-c' | 'pascal' | 'pascaligo' | 'perl' | 'pgsql' | 'php' | 'pla' | 'postiats' | 'powerquery' | 'powershell' | 'protobuf' | 'pug' | 'python' | 'qsharp' | 'r' | 'razor' | 'redis' | 'redshift' | 'restructuredtext' | 'ruby' | 'rust' | 'sb' | 'scala' | 'scheme' | 'scss' | 'shell' | 'solidity' | 'sophia' | 'sparql' | 'sql' | 'st' | 'swift' | 'systemverilog' | 'tcl' | 'twig' | 'typescript' | 'typespec' | 'vb' | 'wgsl' | 'xml' | 'yaml'
 :::
 
-### 后端
+### Backend
 
 ```yaml
 confkeeper:
@@ -95,10 +95,10 @@ confkeeper:
     - "xxx"
 ```
 
-### 前端
+### Frontend
 
 :::tip
-第一个文件是必须改，第二个文件为默认值，也是最好改
+The first file must be changed. The second file contains the default value, so it is best to update it as well.
 :::
 
 ```ts title="rsbuild.config.ts"
